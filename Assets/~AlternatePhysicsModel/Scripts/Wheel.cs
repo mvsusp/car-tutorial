@@ -55,10 +55,14 @@ public class Wheel : MonoBehaviour {
 	public float slipRatio;
 	public float slipVelo;
 	public float compression;
-	
+    public WheelCollider Collider;
+    public Vector3 lastEmitPosition = Vector3.zero;
+    public float lastEmitTime = Time.time;
+    public Vector3 wheelVelo = Vector3.zero;
+    public Vector3 groundSpeed =  Vector3.zero;
+
 	// state
 	float fullCompressionSpringForce;
-	Vector3 wheelVelo;
 	Vector3 localVelo;
 	Vector3 groundNormal;
 	float rotation;
@@ -77,8 +81,13 @@ public class Wheel : MonoBehaviour {
 	float maxAngle;
 	float oldAngle;	
 	Skidmarks skid;
-	
-	float CalcLongitudinalForce(float Fz,float slip)
+    public Transform wheelGraphic;
+    public Component tireGraphic;
+    public bool steerWheel;
+    public bool driveWheel;
+    public int lastSkidmark;
+
+    float CalcLongitudinalForce(float Fz,float slip)
 	{
 		Fz*=0.001f;//convert to kN
 		slip*=100f; //covert to %

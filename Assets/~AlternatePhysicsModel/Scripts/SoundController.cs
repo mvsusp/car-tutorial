@@ -7,7 +7,7 @@ using System.Collections;
 public class SoundController : MonoBehaviour {
 
 	public AudioClip engine;
-	public AudioClip skid;
+	public AudioClip Skid;
 	
 	AudioSource engineSource;
 	AudioSource skidSource;
@@ -30,7 +30,7 @@ public class SoundController : MonoBehaviour {
 	
 	void Start () {
 		engineSource = CreateAudioSource(engine);
-		skidSource = CreateAudioSource(skid);
+		skidSource = CreateAudioSource(Skid);
 		car = GetComponent (typeof (CarController)) as CarController;
 		drivetrain = GetComponent (typeof (Drivetrain)) as Drivetrain;
 	}
